@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/model/ItemPedido.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/DAO/PedidoDao.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/model/Cliente.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/model/Produto.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/DAO/BD.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/DAO/DAO.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/persistence/DatabaseLocator.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/DAO/ItemPedidoDao.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/DAO/ClienteDao.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/controller/ManterClienteController.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/model/Pedido.java</file>
+            <file>file:/C:/Users/winicius/Documents/Faculdade/6°Periodo/Marco%20Antonio/ProjectECommerce/src/java/DAO/ProdutoDao.java</file>
+        </group>
+    </open-files>
+</project-private>
