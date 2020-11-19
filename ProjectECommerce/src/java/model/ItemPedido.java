@@ -17,6 +17,12 @@ public class ItemPedido {
     private Produto produto;
 
     public ItemPedido(){}
+
+    public ItemPedido(Integer id, float subtotal, Produto produto) {
+        this.id = id;
+        this.subtotal = subtotal;
+        this.produto = produto;
+    }
     
     public Integer getId() {
         return id;
@@ -44,14 +50,6 @@ public class ItemPedido {
         this.produto = produto;
         return this;
     }
-
-    public ItemPedido(Integer id, float subtotal, Produto produto) {
-        this.id = id;
-        this.subtotal = subtotal;
-        this.produto = produto;
-    }
-    
-    
     
     
 }

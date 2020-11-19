@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author winicius
+ * @author luiz
  */
 public class PesquisaPedidoController extends HttpServlet {
 

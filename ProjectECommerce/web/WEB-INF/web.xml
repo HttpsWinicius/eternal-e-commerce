@@ -9,20 +9,28 @@
         <servlet-class>controller.PesquisaClienteController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PesquisaPedidoController</servlet-name>
-        <servlet-class>controller.PesquisaPedidoController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>PesquisaProdutoController</servlet-name>
-        <servlet-class>controller.PesquisaProdutoController</servlet-class>
+        <servlet-name>PesquisarProdutoController</servlet-name>
+        <servlet-class>controller.PesquisarProdutoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManterProdutoController</servlet-name>
         <servlet-class>controller.ManterProdutoController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PesquisaPedidoController</servlet-name>
+        <servlet-class>controller.PesquisaPedidoController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ManterPedidoController</servlet-name>
         <servlet-class>controller.ManterPedidoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PesquisarItemPedidoController</servlet-name>
+        <servlet-class>controller.PesquisarItemPedidoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManterItemPedidoController</servlet-name>
+        <servlet-class>controller.ManterItemPedidoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ManterClienteController</servlet-name>
@@ -33,20 +41,28 @@
         <url-pattern>/PesquisaClienteController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PesquisaPedidoController</servlet-name>
-        <url-pattern>/PesquisaPedidoController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PesquisaProdutoController</servlet-name>
-        <url-pattern>/PesquisaProdutoController</url-pattern>
+        <servlet-name>PesquisarProdutoController</servlet-name>
+        <url-pattern>/PesquisarProdutoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManterProdutoController</servlet-name>
         <url-pattern>/ManterProdutoController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PesquisaPedidoController</servlet-name>
+        <url-pattern>/PesquisaPedidoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ManterPedidoController</servlet-name>
         <url-pattern>/ManterPedidoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisarItemPedidoController</servlet-name>
+        <url-pattern>/PesquisarItemPedidoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterItemPedidoController</servlet-name>
+        <url-pattern>/ManterItemPedidoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

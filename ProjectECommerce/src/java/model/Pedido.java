@@ -44,13 +44,6 @@ public class Pedido {
         this.precoTotal = precoTotal;
         return this;
     }
-
-    public Pedido(Integer id, ItemPedido itemPedido, float precoTotal) {
-        this.id = id;
-        this.itemPedido = itemPedido;
-        this.precoTotal = precoTotal;
-    }
-    
     
     
 }

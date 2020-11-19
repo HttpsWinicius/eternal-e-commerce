@@ -6,34 +6,55 @@
 
 package DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Pedido;
+import java.sql.Statement;
+import model.Cliente;
 import model.Produto;
 
 /**
  *
  * @author luiz
  */
-public class ProdutoDao {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   public Produto instanciarProduto (ResultSet rs) throws SQLException {
-        Produto p = new Produto (rs.getInt("id"),
-                rs.getString("descricao"),
-                rs.getFloat("preco")
-        );
-        return p;
+public class ProdutoDao extends DAO{
+        
+    private static ProdutoDao instancia = new ProdutoDao();
+    private Statement stmt;
+
+    private ProdutoDao() {}
+
+    public static ProdutoDao getInstancia() {
+        return instancia;
     }
     
+    public void gravarProduto(Produto produto) throws ClassNotFoundException, SQLException{
+        Connection conexao = null;
+        PreparedStatement stmt = null;
+        
+        try{
+            conexao = BD.getInstancia().getConexao();
+            stmt = conexao.prepareStatement("INSERT INTO produto (id, descricao, preco, status) VALUES (?,?,?,?);"); 
+            stmt.setInt(1, produto.getId());
+            stmt.setString(2, produto.getDescricao());
+            stmt.setFloat(3, produto.getPreco());
+            stmt.setString(4, produto.getStatus());
+           
+            stmt.executeUpdate();
+        }finally{
+            fecharConexao(conexao, stmt);
+        }
+    }
     
-    
-    
+    public Produto instanciarProduto(ResultSet rs) throws SQLException {
+        
+        Produto produto = new Produto();
+        produto.setDescricao(rs.getString("descricao"))
+                .setPreco(rs.getFloat("preco"))
+                .setStatus(rs.getString("status"))
+                .setId(rs.getInt("id"));
+        
+        return produto;
+    }
 }

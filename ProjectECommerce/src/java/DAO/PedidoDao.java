@@ -6,26 +6,10 @@
 
 package DAO;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import model.ItemPedido;
-import model.Pedido;
-
 /**
  *
  * @author luiz
  */
 public class PedidoDao {
-    
-    
-    
-    
-     public Pedido instanciarPedido (ResultSet rs) throws SQLException {
-        Pedido p = new Pedido (rs.getInt("id"),
-                null,
-                rs.getFloat("precoTotal")
-        );
-        return p;
-    }
     
 }

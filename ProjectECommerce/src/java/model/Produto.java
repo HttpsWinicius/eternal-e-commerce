@@ -15,16 +15,16 @@ public class Produto {
     private Integer id;
     private String descricao;
     private float preco;
+    private String status;
 
     public Produto(){}
 
-    
-    public Produto(Integer id, String descricao, float preco) {
+    public Produto(Integer id, String descricao, float preco, String status) {
         this.id = id;
         this.descricao = descricao;
         this.preco = preco;
-    }
-    
+        this.status = status;
+    } 
     
     public Integer getId() {
         return id;
@@ -52,4 +52,14 @@ public class Produto {
         this.preco = preco;
         return this;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Produto setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+      
 }
