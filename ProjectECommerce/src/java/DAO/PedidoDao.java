@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.ItemPedido;
 import model.Pedido;
 import model.Produto;
 
@@ -46,15 +47,16 @@ public class PedidoDao extends DAO{
         }
     }
     
-    public Produto instanciarProduto(ResultSet rs) throws SQLException {
+    
+    
+    public Pedido instanciarPedido(ResultSet rs) throws SQLException {
         
-        Produto produto = new Produto();
-        produto.setDescricao(rs.getString("descricao"))
-                .setPreco(rs.getFloat("preco"))
-                .setStatus(rs.getString("status"))
-                .setId(rs.getInt("id"));
+        Pedido pedido = new Pedido();
+        pedido.setId(rs.getInt("id"))
+                .setPrecoTotal(rs.getFloat("precototal"))
+                .setItemPedido(null);
         
-        return produto;
+        return pedido;
     }
     
     
