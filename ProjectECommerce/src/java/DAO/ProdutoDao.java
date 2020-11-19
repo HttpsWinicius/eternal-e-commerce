@@ -35,11 +35,11 @@ public class ProdutoDao extends DAO{
         
         try{
             conexao = BD.getInstancia().getConexao();
-            stmt = conexao.prepareStatement("INSERT INTO produto (id, descricao, preco, status) VALUES (?,?,?,?);"); 
-            stmt.setInt(1, produto.getId());
-            stmt.setString(2, produto.getDescricao());
-            stmt.setFloat(3, produto.getPreco());
-            stmt.setString(4, produto.getStatus());
+            stmt = conexao.prepareStatement("INSERT INTO produto (descricao, preco, status) VALUES (?,?,?);"); 
+            //stmt.setInt(1, produto.getId());
+            stmt.setString(1, produto.getDescricao());
+            stmt.setFloat(2, produto.getPreco());
+            stmt.setString(3, produto.getStatus());
            
             stmt.executeUpdate();
         }finally{

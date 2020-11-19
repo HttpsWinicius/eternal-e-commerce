@@ -36,10 +36,10 @@ public class PedidoDao extends DAO{
         
         try{
             conexao = BD.getInstancia().getConexao();
-            stmt = conexao.prepareStatement("INSERT INTO pedido (id, id_item_pedido, precototal) VALUES (?,?,?);"); 
-            stmt.setInt(1, pedido.getId());
-            stmt.setInt(2, pedido.getItemPedido().getId());
-            stmt.setFloat(3, pedido.getPrecoTotal());
+            stmt = conexao.prepareStatement("INSERT INTO pedido (id_item_pedido, precototal) VALUES (?,?);"); 
+            //stmt.setInt(1, pedido.getId());
+            stmt.setInt(1, pedido.getItemPedido().getId());
+            stmt.setFloat(2, pedido.getPrecoTotal());
           
             stmt.executeUpdate();
         }finally{

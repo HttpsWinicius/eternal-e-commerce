@@ -36,14 +36,14 @@ public class ItemPedidoDao extends DAO{
          
         try {
             conexao = BD.getInstancia().getConexao();
-            stmt = conexao.prepareStatement("INSERT INTO item_venda (id, id_produto, subtotal) VALUES (?,?,?)");
-            stmt.setInt(1, itemPedido.getId());
+            stmt = conexao.prepareStatement("INSERT INTO item_venda (id_produto, subtotal) VALUES (?,?)");
+            //stmt.setInt(1, itemPedido.getId());
             if (itemPedido.getProduto() == null) {
-                stmt.setNull(2, Types.INTEGER);
+                stmt.setNull(1, Types.INTEGER);
             } else {
-                stmt.setInt(2, itemPedido.getProduto().getId());
+                stmt.setInt(1, itemPedido.getProduto().getId());
             }
-            stmt.setFloat(3,itemPedido.getSubtotal());
+            stmt.setFloat(2,itemPedido.getSubtotal());
           
             stmt.executeUpdate();
             
@@ -52,13 +52,16 @@ public class ItemPedidoDao extends DAO{
         } 
     }
      
-     public ItemPedido instanciarItemPedido(ResultSet rs) throws SQLException {
-        ItemPedido item = new ItemPedido(
-                rs.getInt("id"),
-                rs.getFloat("subtotal"),
-                null
-        );
-        return item;
-    }
      
+     
+    public ItemPedido instanciarItemPedido (ResultSet rs) throws SQLException {
+        
+        ItemPedido itemPedido = new ItemPedido();
+        itemPedido.setId(rs.getInt("id"))
+                .setSubtotal(rs.getFloat("subtotal"))
+                .setProduto(null);
+                
+        return itemPedido;
+    }
+          
 }
