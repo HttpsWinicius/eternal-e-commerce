@@ -39,12 +39,10 @@ public class PedidoDao extends DAO{
         
         try{
             conexao = BD.getInstancia().getConexao();
-<<<<<<< Updated upstream
             stmt = conexao.prepareStatement("INSERT INTO pedido (id_item_pedido, precototal) VALUES (?,?);"); 
             //stmt.setInt(1, pedido.getId());
             stmt.setInt(1, pedido.getItemPedido().getId());
             stmt.setFloat(2, pedido.getPrecoTotal());
-=======
             stmt = conexao.prepareStatement("INSERT INTO pedido (id, id_item_pedido, precototal) VALUES (?,?,?);"); 
             stmt.setInt(1, pedido.getId());
             if (pedido.getItemPedido() == null) {
@@ -53,8 +51,7 @@ public class PedidoDao extends DAO{
                 stmt.setInt(2, pedido.getItemPedido().getId());
             }
             stmt.setFloat(3, pedido.getPrecoTotal());
->>>>>>> Stashed changes
-          
+        
             stmt.executeUpdate();
         }finally{
             fecharConexao(conexao, stmt);

@@ -39,34 +39,23 @@ public class ItemPedidoDao extends DAO {
 
         try {
             conexao = BD.getInstancia().getConexao();
-<<<<<<< Updated upstream
-            stmt = conexao.prepareStatement("INSERT INTO item_venda (id_produto, subtotal) VALUES (?,?)");
-            //stmt.setInt(1, itemPedido.getId());
-=======
             stmt = conexao.prepareStatement("INSERT INTO item_venda (id, id_produto, subtotal, quantidade) VALUES (?,?,?,?)");
             stmt.setInt(1, itemPedido.getId());
->>>>>>> Stashed changes
             if (itemPedido.getProduto() == null) {
                 stmt.setNull(1, Types.INTEGER);
             } else {
                 stmt.setInt(1, itemPedido.getProduto().getId());
             }
-<<<<<<< Updated upstream
-            stmt.setFloat(2,itemPedido.getSubtotal());
-          
-=======
+            stmt.setFloat(2,itemPedido.getSubtotal());         
             stmt.setFloat(3, itemPedido.getSubtotal());
             stmt.setFloat(4, itemPedido.getQuantidade());
->>>>>>> Stashed changes
             stmt.executeUpdate();
 
         } finally {
             fecharConexao(conexao, stmt);
         }
     }
-<<<<<<< Updated upstream
-     
-     
+  
      
     public ItemPedido instanciarItemPedido (ResultSet rs) throws SQLException {
         
@@ -76,18 +65,6 @@ public class ItemPedidoDao extends DAO {
                 .setProduto(null);
                 
         return itemPedido;
-    }
-          
-=======
-
-    public ItemPedido instanciarItemPedido(ResultSet rs) throws SQLException {
-        ItemPedido item = new ItemPedido(
-                rs.getInt("id"),
-                rs.getFloat("subtotal"),
-                rs.getFloat("quantidade"),
-                null
-        );
-        return item;
     }
 
     public List<ItemPedido> obterItensPedidos() throws ClassNotFoundException, SQLException {
@@ -167,6 +144,4 @@ public class ItemPedidoDao extends DAO {
             fecharConexao(conexao, stmt);
         }
     }
-
->>>>>>> Stashed changes
 }
