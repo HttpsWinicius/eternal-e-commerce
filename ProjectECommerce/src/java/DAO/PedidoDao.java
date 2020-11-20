@@ -18,10 +18,6 @@ import model.ItemPedido;
 import model.Pedido;
 import model.Produto;
 
-/**
- *
- * @author luiz
- */
 public class PedidoDao extends DAO{
     
     private static PedidoDao instancia = new PedidoDao();
@@ -39,10 +35,6 @@ public class PedidoDao extends DAO{
         
         try{
             conexao = BD.getInstancia().getConexao();
-            stmt = conexao.prepareStatement("INSERT INTO pedido (id_item_pedido, precototal) VALUES (?,?);"); 
-            //stmt.setInt(1, pedido.getId());
-            stmt.setInt(1, pedido.getItemPedido().getId());
-            stmt.setFloat(2, pedido.getPrecoTotal());
             stmt = conexao.prepareStatement("INSERT INTO pedido (id, id_item_pedido, precototal) VALUES (?,?,?);"); 
             stmt.setInt(1, pedido.getId());
             if (pedido.getItemPedido() == null) {
@@ -57,8 +49,6 @@ public class PedidoDao extends DAO{
             fecharConexao(conexao, stmt);
         }
     }
-    
-    
     
     public Pedido instanciarPedido(ResultSet rs) throws SQLException {
         
