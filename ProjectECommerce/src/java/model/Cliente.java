@@ -6,6 +6,10 @@
 
 package model;
 
+import DAO.ClienteDao;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author luiz
@@ -84,5 +88,23 @@ public class Cliente {
         return this;
     }
     
-       
+    public static Cliente obterCliente(int codCliente) throws ClassNotFoundException, SQLException {
+        return ClienteDao.getInstancia().obterCliente(codCliente);
+    }
+    
+    public static List<Cliente> obterClientes() throws ClassNotFoundException, SQLException {
+        return ClienteDao.getInstancia().obterClientes();
+    }
+    
+    public void gravar() throws SQLException, ClassNotFoundException{
+        ClienteDao.getInstancia().gravarCliente(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        ClienteDao.getInstancia().alterar(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        ClienteDao.getInstancia().excluir(this);
+    }   
 }

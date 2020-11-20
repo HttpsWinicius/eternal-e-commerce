@@ -8,6 +8,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +32,7 @@ public class ManterClienteController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, SQLException, ClassNotFoundException {
 
         String acao = request.getParameter("acao");
         if (acao.equals("confirmarOperacao")) {
@@ -65,9 +67,10 @@ public class ManterClienteController extends HttpServlet {
         }
     }
 
-    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+    public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, SQLException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
 
+        //TODO: LISTAR CORRETAMENTE OS CAMPOS
         int idCliente = Integer.parseInt(request.getParameter("txtCodigo"));
         String nome = request.getParameter("txtNomeCliente");
         String cpf = request.getParameter("txtCpfCliente");
@@ -75,11 +78,7 @@ public class ManterClienteController extends HttpServlet {
         int idConvenio = Integer.parseInt(request.getParameter("selectConvenios"));
 
         try {
-            Convenio convenio = null;
-            if (idConvenio != 0) {
-                convenio = Convenio.obterConvenio(idConvenio);
-            }
-            Cliente cliente = new Cliente(idCliente, nome, cpf, registro, convenio, idConvenio);
+            Cliente cliente = new Cliente(idCliente, nome, registro, registro, cpf, cpf);
             if (operacao.equals("Incluir")) {
                 cliente.gravar();
             } else {
@@ -112,7 +111,13 @@ public class ManterClienteController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -126,7 +131,13 @@ public class ManterClienteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManterClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManterClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
-/**
- *
- * @author luiz
- */
+import DAO.ProdutoDao;
+import java.sql.SQLException;
+import java.util.List;
+
 public class Produto {
     
     private Integer id;
@@ -61,5 +55,28 @@ public class Produto {
         this.status = status;
         return this;
     }
-      
+    public static Produto obterProduto(int codProduto) throws ClassNotFoundException, SQLException {
+        return ProdutoDao.getInstancia().obterProduto(codProduto);
+    }
+
+    public static List<Produto> obterProdutos() throws ClassNotFoundException, SQLException {
+        return ProdutoDao.getInstancia().obterProdutos();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        ProdutoDao.getInstancia().gravarProduto(this);
+    }
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        ProdutoDao.getInstancia().alterar(this);
+    }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        ProdutoDao.getInstancia().excluir(this);
+    }
+    
+    
+    
+    
+          
 }

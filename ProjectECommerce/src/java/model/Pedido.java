@@ -6,6 +6,11 @@
 
 package model;
 
+import DAO.PedidoDao;
+import DAO.ProdutoDao;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author luiz
@@ -45,5 +50,24 @@ public class Pedido {
         return this;
     }
     
+    public static Pedido obterPedido(int idPedido) throws ClassNotFoundException, SQLException {
+        return PedidoDao.getInstancia().obterPedido(idPedido);
+    }
+
+    public static List<Pedido> obterPedidos() throws ClassNotFoundException, SQLException {
+        return PedidoDao.getInstancia().obterPedidos();
+    }
+
+    public void gravar() throws SQLException, ClassNotFoundException {
+        PedidoDao.getInstancia().gravarPedido(this);
+    }
+
+    public void alterar() throws SQLException, ClassNotFoundException {
+        PedidoDao.getInstancia().alterar(this);
+    }
+
+    public void excluir() throws SQLException, ClassNotFoundException {
+        PedidoDao.getInstancia().excluir(this);
+    }
     
 }

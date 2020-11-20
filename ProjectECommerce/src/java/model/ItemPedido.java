@@ -6,6 +6,10 @@
 
 package model;
 
+import DAO.ItemPedidoDao;
+import java.sql.SQLException;
+import java.util.List;
+
 /**
  *
  * @author luiz
@@ -14,14 +18,26 @@ public class ItemPedido {
     
     private Integer id;
     private float subtotal;
+    private float quantidade;
     private Produto produto;
+    
 
     public ItemPedido(){}
 
-    public ItemPedido(Integer id, float subtotal, Produto produto) {
+    public ItemPedido(Integer id, float subtotal, float quantidade, Produto produto) {
         this.id = id;
         this.subtotal = subtotal;
-        this.produto = produto;
+        this.quantidade = quantidade;
+        this.produto = produto;      
+    }
+
+    public float getQuantidade() {
+        return quantidade;
+    }
+
+    public ItemPedido setQuantidade(float quantidade) {
+        this.quantidade = quantidade;
+        return this;
     }
     
     public Integer getId() {
@@ -51,5 +67,24 @@ public class ItemPedido {
         return this;
     }
     
+     public static ItemPedido obterItemPedido(int idItemPedido) throws ClassNotFoundException, SQLException {
+        return ItemPedidoDao.getInstancia().obterItemPedido(idItemPedido);
+    }
+
+    public static List<ItemPedido> obterItensPedidos() throws ClassNotFoundException, SQLException {
+        return ItemPedidoDao.getInstancia().obterItensPedidos();
+    }
+    
+    public void gravar() throws SQLException, ClassNotFoundException{
+        ItemPedidoDao.getInstancia().gravarItemPedido(this);
+    }
+    
+    public void excluir() throws SQLException, ClassNotFoundException{
+        ItemPedidoDao.getInstancia().excluir(this);
+    }
+    
+    public void alterar() throws SQLException, ClassNotFoundException{
+        ItemPedidoDao.getInstancia().alterar(this);
+    }
     
 }
