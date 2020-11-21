@@ -18,10 +18,21 @@ import java.util.List;
 public class Pedido {
     
     private Integer id;
-    private ItemPedido itemPedido;
     private float precoTotal;
+    private String status;
+    
+    private Produto produto;
 
     public Pedido(){}
+
+    public Pedido(Integer id, float precoTotal, String status, Produto produto) {
+        this.id = id;
+        this.precoTotal = precoTotal;
+        this.status = status;
+        this.produto = produto;
+    }
+ 
+    
     
     public Integer getId() {
         return id;
@@ -29,15 +40,6 @@ public class Pedido {
 
     public Pedido setId(Integer id) {
         this.id = id;
-        return this;
-    }
-
-    public ItemPedido getItemPedido() {
-        return itemPedido;
-    }
-
-    public Pedido setItemPedido(ItemPedido itemPedido) {
-        this.itemPedido = itemPedido;
         return this;
     }
 
@@ -49,6 +51,25 @@ public class Pedido {
         this.precoTotal = precoTotal;
         return this;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Pedido setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
+    
     
     public static Pedido obterPedido(int idPedido) throws ClassNotFoundException, SQLException {
         return PedidoDao.getInstancia().obterPedido(idPedido);

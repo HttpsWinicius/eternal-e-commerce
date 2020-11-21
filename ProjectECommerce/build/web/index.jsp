@@ -13,5 +13,7 @@
     </head>
     <body>
         <h1>Bem vindo ao EternalEcommerce</h1>
+        
+        <a href="pesquisaCliente.jsp">Pesquisa Cliente</a>
     </body>
 </html>

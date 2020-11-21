@@ -19,6 +19,7 @@ public class ItemPedido {
     private Integer id;
     private float subtotal;
     private float quantidade;
+    
     private Produto produto;
     
 

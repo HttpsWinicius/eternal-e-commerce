@@ -9,15 +9,13 @@ public class Produto {
     private Integer id;
     private String descricao;
     private float preco;
-    private String status;
 
     public Produto(){}
 
-    public Produto(Integer id, String descricao, float preco, String status) {
+    public Produto(Integer id, String descricao, float preco) {
         this.id = id;
         this.descricao = descricao;
         this.preco = preco;
-        this.status = status;
     } 
     
     public Integer getId() {
@@ -47,14 +45,6 @@ public class Produto {
         return this;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public Produto setStatus(String status) {
-        this.status = status;
-        return this;
-    }
     public static Produto obterProduto(int codProduto) throws ClassNotFoundException, SQLException {
         return ProdutoDao.getInstancia().obterProduto(codProduto);
     }

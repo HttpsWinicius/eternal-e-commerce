@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 10/11/2020, 22:34:40
+    Document   : inserirPedido
+    Created on : 21/11/2020, 12:50:04
     Author     : luiz
 --%>
 
@@ -12,8 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bem vindo ao EternalEcommerce</h1>
-        
-        <a href="pesquisaCliente.jsp">Pesquisa Cliente</a>
+        <h1>Hello World!</h1>
     </body>
 </html>

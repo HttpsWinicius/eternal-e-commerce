@@ -37,11 +37,10 @@ public class ProdutoDao extends DAO {
 
         try {
             conexao = BD.getInstancia().getConexao();
-            stmt = conexao.prepareStatement("INSERT INTO produto (id, descricao, preco, status) VALUES (?,?,?,?);");
+            stmt = conexao.prepareStatement("INSERT INTO produto (id, descricao, preco) VALUES (?,?,?);");
             stmt.setInt(1, produto.getId());
             stmt.setString(2, produto.getDescricao());
             stmt.setFloat(3, produto.getPreco());
-            stmt.setString(4, produto.getStatus());
             stmt.executeUpdate();
         } finally {
             fecharConexao(conexao, stmt);
@@ -53,7 +52,6 @@ public class ProdutoDao extends DAO {
         Produto produto = new Produto();
         produto.setDescricao(rs.getString("descricao"))
                 .setPreco(rs.getFloat("preco"))
-                .setStatus(rs.getString("status"))
                 .setId(rs.getInt("id"));
 
         return produto;
@@ -112,7 +110,6 @@ public class ProdutoDao extends DAO {
             stmt.setInt(1, produto.getId());
             stmt.setString(2, produto.getDescricao());
             stmt.setFloat(3, produto.getPreco());
-            stmt.setString(4, produto.getStatus());
 
             stmt.executeUpdate();
 

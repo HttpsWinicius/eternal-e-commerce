@@ -27,7 +27,7 @@ public class PesquisaPedidoController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
         request.setAttribute("pedidos", Pedido.obterPedidos());
-        RequestDispatcher view = request.getRequestDispatcher("/pesquisaCliente.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/pesquisaPedido.jsp");
         view.forward(request, response);
     }
 

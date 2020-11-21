@@ -74,7 +74,7 @@ public class ManterProdutoController extends HttpServlet {
 
         try {
 
-            Produto produto = new Produto(idProduto, descricao, preco, status);
+            Produto produto = new Produto(idProduto, descricao, preco);
             if (operacao.equals("Incluir")) {
                 produto.gravar();
             } else {
