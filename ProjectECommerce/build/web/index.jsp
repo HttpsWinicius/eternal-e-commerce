@@ -14,6 +14,12 @@
     <body>
         <h1>Bem vindo ao EternalEcommerce</h1>
         
-        <a href="pesquisaCliente.jsp">Pesquisa Cliente</a>
+        <a href="inserir/inserirCliente.jsp">Pesquisa Cliente</a>
+        <br>
+        <a href="inserir/inserirProduto.jsp">Pesquisa Produto</a>
+        <br>
+        <a href="inserir/inserirItemPedido.jsp">Pesquisa Item Pedido</a>
+        <br>
+        <a href="inserir/inserirPedido.jsp">Pesquisa Pedido</a>
     </body>
 </html>

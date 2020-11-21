@@ -25,8 +25,7 @@ public class ItemPedido {
 
     public ItemPedido(){}
 
-    public ItemPedido(Integer id, float subtotal, float quantidade, Produto produto) {
-        this.id = id;
+    public ItemPedido(float subtotal, float quantidade, Produto produto) {
         this.subtotal = subtotal;
         this.quantidade = quantidade;
         this.produto = produto;      

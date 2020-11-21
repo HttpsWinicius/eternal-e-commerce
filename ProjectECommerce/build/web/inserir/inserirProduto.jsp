@@ -6,13 +6,18 @@
         <title>Produto</title>
     </head>
     <body>
+        <a href="../index.jsp">Voltar</a><br>
+        
         <h1>Pesquisa Produto</h1>
         
         <label>Descrição</label>
         <input type="text" name="txtDescricao">
         
         <label>Status</label>
-        <input type="text" name="txtDescricao">
-
+        <input type="text" name="txtStatus">
+        
+        <label>Preço</label>
+        <input type="text" name="txtPreco">
+        
     </body>
 </html>

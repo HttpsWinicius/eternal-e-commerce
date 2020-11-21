@@ -35,12 +35,12 @@ public class PedidoDao extends DAO{
         
         try{
             conexao = BD.getInstancia().getConexao();
-            stmt = conexao.prepareStatement("INSERT INTO pedido (id, id_item_pedido, precototal) VALUES (?,?,?);"); 
+            stmt = conexao.prepareStatement("INSERT INTO pedido (id, precototal, status, id_produto) VALUES (?,?,?,?);"); 
             stmt.setInt(1, pedido.getId());
-            if (pedido.getItemPedido() == null) {
+            if (pedido.getProduto() == null) {
                 stmt.setNull(2, Types.INTEGER);
             } else {
-                stmt.setInt(2, pedido.getItemPedido().getId());
+                stmt.setInt(2, pedido.getProduto().getId());
             }
             stmt.setFloat(3, pedido.getPrecoTotal());
         
@@ -55,7 +55,8 @@ public class PedidoDao extends DAO{
         Pedido pedido = new Pedido();
         pedido.setId(rs.getInt("id"))
                 .setPrecoTotal(rs.getFloat("precototal"))
-                .setItemPedido(null);
+                .setStatus(rs.getString("status"))
+                .setProduto(null);
         
         return pedido;
     }
@@ -109,8 +110,8 @@ public class PedidoDao extends DAO{
 
         try {
             conexao = BD.getInstancia().getConexao();
-            stmt = conexao.prepareStatement("UPDATE pedido SET id_item_pedido=?, precototal=? WHERE id = ?");
-            stmt.setInt(1, pedido.getItemPedido().getId());
+            stmt = conexao.prepareStatement("UPDATE pedido SET precototal=?, status=?, id_produto=? WHERE id = ?");
+            stmt.setInt(1, pedido.getProduto().getId());
             stmt.setFloat(2, pedido.getPrecoTotal());
             stmt.setFloat(3, pedido.getId());
 

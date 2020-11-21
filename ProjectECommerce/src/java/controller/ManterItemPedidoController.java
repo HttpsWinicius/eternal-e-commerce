@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
+import model.ItemPedido;
 import model.Produto;
 
 /**
@@ -44,11 +45,11 @@ public class ManterItemPedidoController extends HttpServlet {
             request.setAttribute("operacao", operacao);
             request.setAttribute("produtos", Produto.obterProdutos());
             if (!operacao.equals("Incluir")) {
-                int idCliente = Integer.parseInt(request.getParameter("idCliente"));
-                Cliente cliente = Cliente.obterCliente(idCliente);
-                request.setAttribute("cliente", cliente);
+                int idItemPedido = Integer.parseInt(request.getParameter("id"));
+                ItemPedido itemPedido = ItemPedido.obterItemPedido(idItemPedido);
+                request.setAttribute("itemVenda", itemPedido);
             }
-            RequestDispatcher view = request.getRequestDispatcher("/views/inserirCliente.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/inserir/inserirItemPedido.jsp");
             view.forward(request, response);
         } catch (ServletException e) {
             throw e;
@@ -63,28 +64,35 @@ public class ManterItemPedidoController extends HttpServlet {
 
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, SQLException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
-
-        //TODO: LISTAR CORRETAMENTE OS CAMPOS
-        int idCliente = Integer.parseInt(request.getParameter("txtCodigo"));
-        String nome = request.getParameter("txtNomeCliente");
-        String cpf = request.getParameter("txtCpfCliente");
-        String registro = request.getParameter("txtRegistroCliente");
-        int idConvenio = Integer.parseInt(request.getParameter("selectConvenios"));
-
+        
+        float subtotal = Float.parseFloat(request.getParameter("txtSubtotal"));
+        float quantidade = Float.parseFloat(request.getParameter("txtQuantidade"));
+        int idProduto = Integer.parseInt(request.getParameter("slProduto"));
+        
         try {
-            Cliente cliente = new Cliente(idCliente, nome, registro, registro, cpf, cpf);
+             Produto produto = null;
+            if (idProduto != 0) {
+                produto = Produto.obterProduto(idProduto);
+            }
+            
+           ItemPedido itemPedido = new ItemPedido();
+           itemPedido.setSubtotal(subtotal)
+                   .setQuantidade(quantidade)
+                   .setProduto(produto);
+   
+           
             if (operacao.equals("Incluir")) {
-                cliente.gravar();
+                itemPedido.gravar();
             } else {
                 if (operacao.equals("Editar")) {
-                    cliente.alterar();
+                    itemPedido.alterar();
                 } else {
                     if (operacao.equals("Excluir")) {
-                        cliente.excluir();
+                        itemPedido.excluir();
                     }
                 }
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaClienteController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaItemPedidoController");
             view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);

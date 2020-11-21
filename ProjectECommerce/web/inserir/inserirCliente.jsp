@@ -6,7 +6,7 @@
         <title>Cliente</title>
     </head>
     <body>
-        <a href="index.jsp">Voltar</a><br>
+         <a href="../index.jsp">Voltar</a><br>
         
         <h1>Pesquisa Cliente</h1>
 

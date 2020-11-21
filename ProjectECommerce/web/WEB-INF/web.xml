@@ -32,6 +32,10 @@
         <servlet-name>ManterItemPedidoController</servlet-name>
         <servlet-class>controller.ManterItemPedidoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RealizarPedido</servlet-name>
+        <servlet-class>controller.RealizarPedidoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ManterClienteController</servlet-name>
         <url-pattern>/ManterClienteController</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ManterItemPedidoController</servlet-name>
         <url-pattern>/ManterItemPedidoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizarPedido</servlet-name>
+        <url-pattern>/RealizarPedido</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

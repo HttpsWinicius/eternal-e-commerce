@@ -100,7 +100,7 @@ public class ManterPedidoController extends HttpServlet {
                     }
                 }
             }
-            RequestDispatcher view = request.getRequestDispatcher("PesquisaVendaController");
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaPedidoController");
             view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
