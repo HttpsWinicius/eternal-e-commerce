@@ -78,6 +78,7 @@ public class ManterItemPedidoController extends HttpServlet {
                 produto = Produto.obterProduto(idProduto);
             }
             
+            
            ItemPedido itemPedido = new ItemPedido();
            itemPedido.setSubtotal(subtotal)
                    .setQuantidade(quantidade)
