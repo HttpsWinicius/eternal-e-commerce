@@ -20,19 +20,17 @@ public class Pedido {
     private Integer id;
     private float precoTotal;
     private String status;
-    
+    private int idProduto;
     private Produto produto;
 
     public Pedido(){}
 
-    public Pedido(Integer id, float precoTotal, String status, Produto produto) {
+    public Pedido(Integer id, float precoTotal, String status, int idProduto) {
         this.id = id;
         this.precoTotal = precoTotal;
         this.status = status;
-        this.produto = produto;
+        this.idProduto = idProduto;
     }
- 
-    
     
     public Integer getId() {
         return id;
@@ -67,6 +65,14 @@ public class Pedido {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
     
     

@@ -6,6 +6,7 @@
 
 package controller;
 
+import DAO.ProdutoDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
 import model.ItemPedido;
+import model.Pedido;
 import model.Produto;
 
 /**
@@ -66,8 +68,9 @@ public class ManterItemPedidoController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         
         float subtotal = Float.parseFloat(request.getParameter("txtSubtotal"));
-        float quantidade = Float.parseFloat(request.getParameter("txtQuantidade"));
+        int quantidade = Integer.parseInt(request.getParameter("txtQuantidade"));
         int idProduto = Integer.parseInt(request.getParameter("slProduto"));
+        String status = request.getParameter("txtStatus");
         
         try {
              Produto produto = null;
@@ -79,10 +82,23 @@ public class ManterItemPedidoController extends HttpServlet {
            itemPedido.setSubtotal(subtotal)
                    .setQuantidade(quantidade)
                    .setProduto(produto);
-   
            
+           Pedido pedido = new Pedido();
+           pedido.setPrecoTotal(subtotal)
+                   .setStatus(status)
+                   .setIdProduto(idProduto);
+                  
+                   
             if (operacao.equals("Incluir")) {
+                pedido.gravar();
                 itemPedido.gravar();
+                
+                ProdutoDao produtoDao = new ProdutoDao();  
+                
+                int qtdAtual = itemPedido.abaterEstoque(quantidade, idProduto);
+                
+                produtoDao.atualizarEstoqueAtual(qtdAtual, idProduto);  
+                
             } else {
                 if (operacao.equals("Editar")) {
                     itemPedido.alterar();

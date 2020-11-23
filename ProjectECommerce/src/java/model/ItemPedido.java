@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import DAO.ItemPedidoDao;
@@ -15,20 +14,30 @@ import java.util.List;
  * @author luiz
  */
 public class ItemPedido {
-    
+
     private Integer id;
     private float subtotal;
     private float quantidade;
-    
-    private Produto produto;
-    
 
-    public ItemPedido(){}
+    private Produto produto;
+
+    public ItemPedido() {
+    }
+
+    public int abaterEstoque(int quantidade, int idProduto) throws SQLException, ClassNotFoundException {
+        produto.obterProduto(idProduto);
+
+        int qtdEstoque = produto.getEstoqueAtual();
+
+        int novoEstoque = quantidade - qtdEstoque;
+
+        return novoEstoque;
+    }
 
     public ItemPedido(float subtotal, float quantidade, Produto produto) {
         this.subtotal = subtotal;
         this.quantidade = quantidade;
-        this.produto = produto;      
+        this.produto = produto;
     }
 
     public float getQuantidade() {
@@ -39,7 +48,7 @@ public class ItemPedido {
         this.quantidade = quantidade;
         return this;
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -66,25 +75,25 @@ public class ItemPedido {
         this.produto = produto;
         return this;
     }
-    
-     public static ItemPedido obterItemPedido(int idItemPedido) throws ClassNotFoundException, SQLException {
+
+    public static ItemPedido obterItemPedido(int idItemPedido) throws ClassNotFoundException, SQLException {
         return ItemPedidoDao.getInstancia().obterItemPedido(idItemPedido);
     }
 
     public static List<ItemPedido> obterItensPedidos() throws ClassNotFoundException, SQLException {
         return ItemPedidoDao.getInstancia().obterItensPedidos();
     }
-    
-    public void gravar() throws SQLException, ClassNotFoundException{
+
+    public void gravar() throws SQLException, ClassNotFoundException {
         ItemPedidoDao.getInstancia().gravarItemPedido(this);
     }
-    
-    public void excluir() throws SQLException, ClassNotFoundException{
+
+    public void excluir() throws SQLException, ClassNotFoundException {
         ItemPedidoDao.getInstancia().excluir(this);
     }
-    
-    public void alterar() throws SQLException, ClassNotFoundException{
+
+    public void alterar() throws SQLException, ClassNotFoundException {
         ItemPedidoDao.getInstancia().alterar(this);
     }
-    
+
 }

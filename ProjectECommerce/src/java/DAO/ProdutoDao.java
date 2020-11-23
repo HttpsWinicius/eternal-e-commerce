@@ -24,8 +24,7 @@ public class ProdutoDao extends DAO {
     private static ProdutoDao instancia = new ProdutoDao();
     private Statement stmt;
 
-    private ProdutoDao() {
-    }
+    public ProdutoDao() {}
 
     public static ProdutoDao getInstancia() {
         return instancia;
@@ -110,6 +109,24 @@ public class ProdutoDao extends DAO {
             stmt.setInt(1, produto.getId());
             stmt.setString(2, produto.getDescricao());
             stmt.setFloat(3, produto.getPreco());
+
+            stmt.executeUpdate();
+
+        } finally {
+            fecharConexao(conexao, stmt);
+        }
+    }
+    
+     public void atualizarEstoqueAtual(int qtdAtual, int idProduto) throws SQLException, ClassNotFoundException {
+        Connection conexao = null;
+        PreparedStatement stmt = null;
+
+        try {
+            conexao = BD.getInstancia().getConexao();
+            stmt = conexao.prepareStatement("UPDATE produto SET estoque_atual=? WHERE id = ?");
+ 
+            stmt.setInt(1, qtdAtual);
+            stmt.setInt(2, idProduto);
 
             stmt.executeUpdate();
 

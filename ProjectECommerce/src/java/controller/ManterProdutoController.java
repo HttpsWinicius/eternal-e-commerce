@@ -71,10 +71,16 @@ public class ManterProdutoController extends HttpServlet {
         String descricao = request.getParameter("txtDescricao");
         String status = request.getParameter("txtStatus");
         float preco = Float.parseFloat(request.getParameter("txtPreco"));
+        int qtdEstoque = Integer.parseInt(request.getParameter("txtEstoqueAtual"));
 
         try {
 
-            Produto produto = new Produto(idProduto, descricao, preco);
+            Produto produto = new Produto();
+            produto.setDescricao(descricao)
+                    .setId(idProduto)
+                    .setEstoqueAtual(qtdEstoque)
+                    .setPreco(preco);
+            
             if (operacao.equals("Incluir")) {
                 produto.gravar();
             } else {
